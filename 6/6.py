@@ -30,7 +30,6 @@ for index, element, in enumerate(list):
             characters_until_start_detected = counter
             break
 
-
 # Print Answers
 print("There are {} characters before the first start-of-packet marker is detected".format(characters_until_start_detected))
 

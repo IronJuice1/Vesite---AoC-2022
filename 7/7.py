@@ -72,8 +72,7 @@ for element in directory_size_list:
         final_list.append(element)
 
 # Print Answers
-print(sum(final_list)) # Wrong Answer?
-
+print("Final Sum: {}".format(sum(final_list))) # Wrong Answer?
 
 print(directory_size_list)
 

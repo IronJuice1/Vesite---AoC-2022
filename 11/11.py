@@ -1,6 +1,4 @@
 
-import math
-
 # Read the Input
 with open('10/input.txt', 'r') as file:
     # read the file line by line

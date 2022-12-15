@@ -12,25 +12,34 @@ with open('6/input.txt', 'r') as file:
 # Make a list where each element is a character
 list = list(input_string)
 
-# Move through list 
-counter = 0
-for index, element, in enumerate(list):
-    counter += 1
-    if counter >= 4:
-        temp_char_list = [] # Temp list of the previous 4 characters
-        temp_char_list.append(list[index - 3]) 
-        temp_char_list.append(list[index - 2])
-        temp_char_list.append(list[index - 1])
-        temp_char_list.append(list[index - 0])
-        temp_set = set(temp_char_list)
+# Will return the amount of characters until the start of the sequence is detected, or -1
+def check_for_n_distinct_characters(_list, _n):
+    counter = 0
+    for index, element, in enumerate(_list):
+        counter += 1
+        if counter >= _n:
 
-        # Check if all 4 characters are unique
-        if len(temp_char_list) == len(temp_set):
-            # Then all 4 characters are unique
-            characters_until_start_detected = counter
-            break
+            temp_char_list = [] # Temp list of the previous n characters
+            for i in range(_n):
+                temp_char_list.append(_list[index - i])
+            temp_set = set(temp_char_list)
+
+            # Check if all n characters are unique
+            if len(temp_char_list) == len(temp_set):
+                # Then all n consecutive characters are unique
+                return counter
+
+    return -1
+
+check_part_1 = check_for_n_distinct_characters(list, 4)
+if check_part_1 != 0:
+    characters_until_start_detected_1 = check_part_1
+
+check_part_2 = check_for_n_distinct_characters(list, 14)
+if check_part_2 != 0:
+    characters_until_start_detected_2 = check_part_2
 
 # Print Answers
-print("There are {} characters before the first start-of-packet marker is detected".format(characters_until_start_detected))
-
+print("There are {} characters before the first start-of-packet marker is detected".format(characters_until_start_detected_1))
+print("There are {} characters before the first start-of-message marker is detected".format(characters_until_start_detected_2))
 
